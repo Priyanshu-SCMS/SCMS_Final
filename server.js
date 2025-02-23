@@ -6,6 +6,9 @@ const cors = require("cors");
 // Env variables load karo
 dotenv.config();
 
+
+const PORT = process.env.PORT || 5000;
+
 // Express App Initialize Karo
 const app = express();
 app.use(express.json());
@@ -55,6 +58,11 @@ app.post("/getResult", async (req, res) => {
   }
 });
 
+
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
+
+
 // Fees API Routes Include Karo
 const feesRoutes = require('./routes/fees');
 app.use('/fees', feesRoutes);
@@ -63,7 +71,7 @@ app.use('/fees', feesRoutes);
 const connectDB = async () => {
   try {
     if (!process.env.MONGO_URI) {
-      console.error("❌ MONGO_URI is missing in .env file!");
+      console.error("MONGO_URI is missing in .env file!");
       process.exit(1);
     }
 
@@ -71,16 +79,15 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("✅ MongoDB Connected Successfully");
+    console.log(" MongoDB Connected Successfully");
   } catch (error) {
-    console.error("❌ MongoDB Connection Failed:", error);
+    console.error(" MongoDB Connection Failed:", error);
     process.exit(1);
   }
 };
 
 // Server Start Karo
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, async () => {
+app.listen(PORT,async() => {
   await connectDB();
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+  console.log(`Server running on port: http://localhost:${PORT} `);
+}); 
