@@ -31,6 +31,8 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 });
 
 const ResultModel = require("./models/ResultModel"); // Model Import Karo
+const User = require('../models/User');
+
 
 // Result Fetch API
 app.post("/getResult", async (req, res) => {
@@ -59,7 +61,8 @@ app.post("/getResult", async (req, res) => {
 });
 
 
-const authRoutes = require("./routes/auth");
+const path = require("path");
+const authRoutes = require(path.join(__dirname, "routes", "auth.js"));
 app.use("/api/auth", authRoutes);
 
 
