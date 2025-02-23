@@ -60,7 +60,7 @@ app.post("/getResult", async (req, res) => {
 
 
 const authRoutes = require("./routes/auth");
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 
 
 // Fees API Routes Include Karo
