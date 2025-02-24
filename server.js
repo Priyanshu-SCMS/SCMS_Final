@@ -31,7 +31,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 });
 
 const ResultModel = require("./models/ResultModel"); // Model Import Karo
-const User = require('../models/User');
+const User = require("../models/User");
 
 
 // Result Fetch API
