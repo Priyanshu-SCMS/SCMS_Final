@@ -62,9 +62,9 @@ app.post("/getResult", async (req, res) => {
 });
 
 
-const path = require("path");
-const authRoutes = require(path.join(__dirname, "routes", "auth.js"));
-app.use("/api/auth", authRoutes);
+const authRoutes = require('./routes/auth'); // Ensure correct path
+app.use('/api/auth', authRoutes);
+
 
 
 // Fees API Routes Include Karo
