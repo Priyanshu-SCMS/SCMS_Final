@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // Express App Initialize Karo
 const app = express();
-app.use(express.json());
+app.use(express.json());  
 app.use(cors());
 
 const { upload, uploadFileToGCS } = require("./upload");
@@ -62,8 +62,8 @@ app.post("/getResult", async (req, res) => {
 });
 
 
-const authRoutes = require('./routes/auth'); // Ensure correct path
-app.use('/api/auth', authRoutes);
+const authRoutes = require("./routes/auth"); 
+app.use("/api/auth", authRoutes); 
 
 
 
@@ -91,5 +91,7 @@ const connectDB = async () => {
 };
 
 // Server Start Karo
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
-
+app.listen(PORT,async() => {
+  await connectDB();
+  console.log(`Server running on port: http://localhost:${PORT} `);
+}); 
