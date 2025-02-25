@@ -71,6 +71,11 @@ app.use("/api/auth", authRoutes);
 const feesRoutes = require('./routes/fees');
 app.use('/fees', feesRoutes);
 
+
+console.log("Auth Routes Loaded Successfully");
+console.log(authRoutes.stack.map(r => r.route.path));
+
+
 // MongoDB Connection Function
 const connectDB = async () => {
   try {
